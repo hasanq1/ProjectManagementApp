@@ -4,12 +4,13 @@ const Project = require('../models/Project');
 const Client = require('../models/Client');
 
  const {
+    graphql, 
     GraphQLObjectType, 
     GraphQLString, 
     GraphQLID, 
-    graphql, 
     GraphQLSchema,
-    GraphQLList
+    GraphQLList,
+    GraphQLNonNull
 } = require('graphql'); // import grapg QL object type 
 
  // Project type
@@ -74,6 +75,43 @@ const Client = require('../models/Client');
     }
  });
 
+// Mutations amek changes to the database
+const mutation = new GraphQLObjectType({
+    name: 'Mutation',
+    fields: {
+    //Add a client
+      addClient: {
+        type: ClientType,
+        args: {
+            name: { type: new GraphQLNonNull(GraphQLString) },
+            email: { type: new GraphQLNonNull(GraphQLString) },
+            phone: { type: new GraphQLNonNull(GraphQLString) },
+        },
+        resolve(parent, args){
+            const client = new Client({
+                name: args.name,
+                email: args.email,
+                phones: args.phone,
+            });
+            return client.save();
+        },
+      },
+      // Delete a client
+      deleteClient:{
+        type: ClientType,
+        args: {
+            id: { type: new GraphQLNonNull(GraphQLID) },
+        },
+        resolve(parent, args){
+            return Client.findByIdAndRemove(args.id);
+        }
+      },
+    },
+});
+
+
+
  module.exports = new GraphQLSchema({
-    query: RootQuery
+    query: RootQuery,
+    mutation
  })
