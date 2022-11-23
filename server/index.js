@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const colors = require('colors');
 require('dotenv').config();
 const { graphqlHTTP } = require('express-graphql');
@@ -8,7 +9,7 @@ const connectDB = require('./config/db');
 const app = express();
 
 connectDB();
-
+app.use(cors());
 app.use(
     '/graphql', 
     graphqlHTTP({   // graphQL endpoint schema being exported
@@ -17,4 +18,4 @@ app.use(
 })//graphQL results vs API: you only get data you want with graphQL
 );
 
-app.listen(port, console.log(`Server running on post ${port}`));
+app.listen(port, console.log(`Server running on port ${port}`));
