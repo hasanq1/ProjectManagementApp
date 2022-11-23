@@ -3,7 +3,6 @@ import ClientRow from './ClientRow'
 import { GET_CLIENTS } from './queries/clientQueries';
 
 
-
 export default function Clients() {
     const {loading, error, data } = useQuery(GET_CLIENTS);
     if (loading) return <p>loading...</p>;
