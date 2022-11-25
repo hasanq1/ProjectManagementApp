@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { FaUser } from 'react-icons/fa';
 import { useMutation } from '@apollo/client';
 import { ADD_CLIENT } from '../mutations/clientMutations';
-import { GET_CLIENTS } from './queries/clientQueries';// needed to update Cache
+import { GET_CLIENTS } from '../queries/clientQueries';// needed to update Cache
 
 
 
