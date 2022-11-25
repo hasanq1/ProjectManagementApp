@@ -9,19 +9,17 @@ export default function ClientRow({client}) {
         refetchQueries: [{ query: GET_CLIENTS}],
     });
     
-    return(
-        <>
+    return (
         <tr>
-            <td>{ client.name }</td>
-            <td>{ client.email }</td>
-            <td>{ client.phone }</td>
-            <td>
-            <button className="btn btn-danger btn-sm" onClick={{deleteClient}}>
-                <FaTrash />
+          <td>{client.name}</td>
+          <td>{client.email}</td>
+          <td>{client.phone}</td>
+          <td>
+            <button className='btn btn-danger btn-sm' onClick={deleteClient}>
+              <FaTrash />
             </button>
-            </td>
+          </td>
         </tr>
-        </>
-    )
-
-}
+      );
+    }
+    

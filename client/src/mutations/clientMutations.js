@@ -9,6 +9,6 @@ const DELETE_CLIENT = gql`
             phone
         }
     }
-`
+`;
 
 export {DELETE_CLIENT};
