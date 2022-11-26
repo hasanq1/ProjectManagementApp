@@ -14,7 +14,7 @@ export default function Project() {
     if (loading) return <Spinner />;
     if (error) return <p>Something went wrong</p>;
 
-    return <>
+    return (<>
     {!loading && !error && (
         <div className='mx-auto w-75 card p-5'>
             <Link to="/" className="btn btn-light btn-sm w-25 d-inline ms-auto">
@@ -32,6 +32,7 @@ export default function Project() {
     )}
     
     
-    </>;
+    </>
+    );
 
 }

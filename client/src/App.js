@@ -14,16 +14,16 @@ const cache = new InMemoryCache({
         clients: {
           merge(existing, incoming) {
             return incoming;
-          }
+          },
         },
         projects: {
           merge(existing, incoming) {
             return incoming;
-          }
-        }
-      }
-    }
-  }
+          },
+        },
+      },
+    },
+  },
 });
 
 
@@ -40,11 +40,11 @@ function App() {
       <Router>
       <Header />
       {/* //header location componenets */}
-      <div className="container">
+      <div className='container'>
        <Routes>
         <Route path='/' element = {<Home />} />
         <Route path='*' element = {<NotFound />} />
-        <Route path='/project/:id' element = {<Project />} />
+        <Route path='/projects/:id' element = {<Project />} />
        </Routes>
       </div>
       </Router>
